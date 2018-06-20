@@ -10,6 +10,10 @@ require('update-notifier')({ pkg: require('../package.json') }).notify()
 
 const TTY = process.platform === 'win32' ? 'CON' : '/dev/tty'
 
+const BLACKLIST_KEYWORDS = ['greenkeeper', 'noreply', '\\bbot\\b']
+
+const REGEX_BLACKLIST_KEYWORDS = new RegExp(BLACKLIST_KEYWORDS.join('|'), 'i')
+
 const throwError = err => {
   const message = chalk.red(err.message || err)
   console.log(message)
@@ -54,22 +58,27 @@ const renderContributors = contributors => {
 const { print, cwd, save } = cli.flags
 ;(async () => {
   try {
-    if (!await existsFile('.git')) { return throwError({ message: 'Ops, not git directory detected!' }) }
+    if (!await existsFile('.git')) {
+      return throwError({ message: 'Ops, not git directory detected!' })
+    }
     const { stdout, stderr } = await execa.shell(`git shortlog -sne < ${TTY}`, {
       cwd
     })
     if (stderr) return throwError(stderr)
 
-    const contributors = stdout.split('\n').reduce((acc, line) => {
-      const [commits, author] = line.split('\t')
-      const [name, email] = author.split('<')
-      return acc.concat({
-        commits: Number(commits.trim()),
-        author,
-        name,
-        email: email.replace('>', '')
-      })
-    }, [])
+    const contributors = stdout
+      .split('\n')
+      .reduce((acc, line) => {
+        const [commits, author] = line.split('\t')
+        const [name, email] = author.split('<')
+        return acc.concat({
+          commits: Number(commits.trim()),
+          author,
+          name,
+          email: email.replace('>', '')
+        })
+      }, [])
+      .filter(({ author }) => !REGEX_BLACKLIST_KEYWORDS.test(author))
 
     if (print) renderContributors(contributors)
     const pkg = await loadPkg(`${cwd}/package.json`)
