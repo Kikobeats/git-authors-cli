@@ -1,0 +1,75 @@
+{
+  "name": "git-authors-cli",
+  "description": "Print all contributors and add it into package.json",
+  "homepage": "https://documentup.com/Kikobeats/git-authors-cli",
+  "version": "0.0.0",
+  "bin": {
+    "git-authors-cli": "bin/index.js"
+  },
+  "author": {
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://kikobeats.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kikobeats/git-authors-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kikobeats/git-authors-cli/issues"
+  },
+  "keywords": [
+    "author",
+    "authors",
+    "cli",
+    "contributor",
+    "contributors",
+    "package.json"
+  ],
+  "dependencies": {
+    "execa": "~0.10.0",
+    "exists-file": "~3.0.2",
+    "json-future": "~2.1.2",
+    "meow": "~5.0.0",
+    "update-notifier": "~2.5.0"
+  },
+  "devDependencies": {
+    "finepack": "latest",
+    "git-dirty": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier-standard": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "lint": "standard-markdown && standard",
+    "precommit": "lint-staged",
+    "pretest": "npm run lint",
+    "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
+    "test": "exit 0"
+  },
+  "preferGlobal": true,
+  "license": "MIT",
+  "lint-staged": {
+    "package.json": [
+      "finepack",
+      "git add"
+    ],
+    "*.js": [
+      "prettier-standard",
+      "git add"
+    ],
+    "*.md": [
+      "standard-markdown",
+      "git add"
+    ]
+  }
+}
