@@ -18,6 +18,14 @@ const BLACKLIST_KEYWORDS = ['greenkeeper', 'noreply', '\\bbot\\b']
 
 const REGEX_BLACKLIST_KEYWORDS = new RegExp(BLACKLIST_KEYWORDS.join('|'), 'i')
 
+const REGEX_EMAIL_VARIATIONS = /[.+]/g
+
+const normalizeEmail = email =>
+  email.toLowerCase().replace(REGEX_EMAIL_VARIATIONS, '')
+
+const isSameEmail = (email1, email2) =>
+  normalizeEmail(email1) === normalizeEmail(email2)
+
 const processError = err => {
   console.log(chalk.red(err.message || err))
   process.exit(1)
@@ -86,8 +94,8 @@ const renderContributors = contributors => {
         })
       }, [])
       .reduce((acc, contributor, indexContributor, contributors) => {
-        const index = acc.findIndex(
-          item => item.email.tolowerCase() === contributor.email.tolowerCase()
+        const index = acc.findIndex(({ email }) =>
+          isSameEmail(email, contributor.email)
         )
         const isPresent = index !== -1
         if (!isPresent) return acc.concat(contributor)
