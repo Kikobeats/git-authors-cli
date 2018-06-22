@@ -2,7 +2,7 @@
   "name": "git-authors-cli",
   "description": "Print all contributors and add it into package.json",
   "homepage": "https://documentup.com/Kikobeats/git-authors-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "bin": {
     "git-authors-cli": "bin/index.js"
   },
