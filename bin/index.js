@@ -86,7 +86,9 @@ const renderContributors = contributors => {
         })
       }, [])
       .reduce((acc, contributor, indexContributor, contributors) => {
-        const index = acc.findIndex(item => item.email === contributor.email)
+        const index = acc.findIndex(
+          item => item.email.tolowerCase() === contributor.email.tolowerCase()
+        )
         const isPresent = index !== -1
         if (!isPresent) return acc.concat(contributor)
         acc[index].commits += contributor.commits
