@@ -58,12 +58,23 @@ const loadPkg = path => {
   }
 }
 
-const renderContributors = contributors => {
+const getMaxIndent = (contributors, propName) => {
+  const sorted = contributors.sort((c1, c2) => c2[propName] - c1[propName])
+  const first = sorted[0][propName]
+  return String(first).length
+}
+
+const indent = (maxIndentation, prop = '') => {
+  const indentSize = maxIndentation - String(prop).length
+  return Array.from({ length: indentSize }, () => ' ').join('')
+}
+
+const renderContributors = (contributors, maxIndent) => {
   console.log()
   contributors.forEach(({ author, commits, name, email }) => {
     const prettyAuthor = chalk.gray(author.replace(name, chalk.white(name)))
-    const prettyCommits = chalk.white(commits)
-    console.log(`  ${prettyCommits}\t${prettyAuthor}`)
+    const prettyCommits = chalk.white(`${indent(maxIndent, commits)}${commits}`)
+    console.log(`  ${prettyCommits}  ${prettyAuthor}`)
   })
 }
 ;(async () => {
@@ -90,7 +101,7 @@ const renderContributors = contributors => {
           author,
           commits: Number(commits.trim()),
           email: email.replace('>', ''),
-          name
+          name: name.trim()
         })
       }, [])
       .reduce((acc, contributor, indexContributor, contributors) => {
@@ -105,7 +116,8 @@ const renderContributors = contributors => {
       .filter(({ author }) => !REGEX_BLACKLIST_KEYWORDS.test(author))
       .sort((c1, c2) => c2.commits - c1.commits)
 
-    if (print) renderContributors(contributors)
+    const maxIndent = getMaxIndent(contributors, 'commits')
+    if (print) renderContributors(contributors, maxIndent)
     const pkg = await loadPkg(pkgPath)
 
     if (pkg && save) {
@@ -114,7 +126,9 @@ const renderContributors = contributors => {
       await jsonFuture.saveAsync(pkgPath, newPkg)
       if (print) {
         console.log(
-          `\n  ${chalk.gray(`Added into ${chalk.white('package.json')} ✨`)}`
+          `\n${indent(maxIndent)} ${chalk.gray(
+            `Added into ${chalk.white('package.json')} ✨`
+          )}`
         )
       }
     }
