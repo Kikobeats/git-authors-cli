@@ -1,3 +1,12 @@
+<a name="1.0.4"></a>
+## 1.0.4 (2018-06-24)
+
+* Improve indent ([13630d5](https://github.com/Kikobeats/git-authors-cli/commit/13630d5))
+* Update README.md ([1bfe1a0](https://github.com/Kikobeats/git-authors-cli/commit/1bfe1a0))
+* Update README.md ([6ef0869](https://github.com/Kikobeats/git-authors-cli/commit/6ef0869))
+
+
+
 <a name="1.0.3"></a>
 ## 1.0.3 (2018-06-22)
 
