@@ -7,7 +7,9 @@
 
 ![](demo.png)
 
-> Print all contributors and add it into package.json
+> Detects your project contributors and add it into your `package.json`.
+
+Add credits for people that help you ship code is important, but it is a task easy to forget. This tool makes it easy to integrate as part of your release process, so your contributors are always up to date ✨.
 
 ## Install
 
