@@ -18,6 +18,8 @@ const BLACKLIST_KEYWORDS = ['greenkeeper', 'noreply', '\\bbot\\b']
 
 const REGEX_BLACKLIST_KEYWORDS = new RegExp(BLACKLIST_KEYWORDS.join('|'), 'i')
 
+const isString = value => typeof value === 'string'
+
 const REGEX_EMAIL_VARIATIONS = /[.+]/g
 
 const normalizeEmail = email =>
@@ -77,52 +79,64 @@ const renderContributors = (contributors, maxIndent) => {
     console.log(`  ${prettyCommits}  ${prettyAuthor}`)
   })
 }
-;(async () => {
-  try {
-    if (!await existsFile('.git')) {
-      return processError({
-        message: 'Ops, not git directory detected!'
+
+const getContributors = async () => {
+  if (!await existsFile('.git')) {
+    return processError({
+      message: 'Ops, not git directory detected!'
+    })
+  }
+
+  const { print, cwd, save } = cli.flags
+  const pkgPath = path.join(cwd, 'package.json')
+  const cmd = `git shortlog -sne < ${TTY}`
+  const { stdout, stderr } = await execa.shell(cmd, { cwd })
+
+  if (stderr) return processError(stderr)
+
+  const { author: pkgAuthor } = require(pkgPath)
+
+  const contributors = stdout
+    .split(EOL)
+    .reduce((acc, line) => {
+      const [commits, author] = line.split('\t')
+      const [name, email] = author.split('<')
+      return acc.concat({
+        author,
+        commits: Number(commits.trim()),
+        email: email.replace('>', ''),
+        name: name.trim()
       })
-    }
+    }, [])
+    .reduce((acc, contributor, indexContributor, contributors) => {
+      const index = acc.findIndex(({ email }) =>
+        isSameEmail(email, contributor.email)
+      )
+      const isPresent = index !== -1
+      if (!isPresent) return acc.concat(contributor)
+      acc[index].commits += contributor.commits
+      return acc
+    }, [])
+    .filter(({ author }) => !REGEX_BLACKLIST_KEYWORDS.test(author))
+    .filter(
+      ({ email }) =>
+        isString(pkgAuthor)
+          ? new RegExp(pkgAuthor, 'i').test(email)
+          : !isSameEmail(pkgAuthor.email, email)
+    )
+    .sort((c1, c2) => c2.commits - c1.commits)
 
-    const { print, cwd, save } = cli.flags
-    const pkgPath = path.join(cwd, 'package.json')
-    const cmd = `git shortlog -sne < ${TTY}`
-    const { stdout, stderr } = await execa.shell(cmd, { cwd })
+  const maxIndent = contributors.length
+    ? getMaxIndent(contributors, 'commits')
+    : ''
 
-    if (stderr) return processError(stderr)
-
-    const contributors = stdout
-      .split(EOL)
-      .reduce((acc, line) => {
-        const [commits, author] = line.split('\t')
-        const [name, email] = author.split('<')
-        return acc.concat({
-          author,
-          commits: Number(commits.trim()),
-          email: email.replace('>', ''),
-          name: name.trim()
-        })
-      }, [])
-      .reduce((acc, contributor, indexContributor, contributors) => {
-        const index = acc.findIndex(({ email }) =>
-          isSameEmail(email, contributor.email)
-        )
-        const isPresent = index !== -1
-        if (!isPresent) return acc.concat(contributor)
-        acc[index].commits += contributor.commits
-        return acc
-      }, [])
-      .filter(({ author }) => !REGEX_BLACKLIST_KEYWORDS.test(author))
-      .sort((c1, c2) => c2.commits - c1.commits)
-
-    const maxIndent = getMaxIndent(contributors, 'commits')
+  if (contributors.length) {
     if (print) renderContributors(contributors, maxIndent)
     const pkg = await loadPkg(pkgPath)
 
     if (pkg && save) {
-      const authors = contributors.map(contributors => contributors.author)
-      const newPkg = { ...pkg, contributors: authors }
+      const newContributors = contributors.map(({ author }) => author)
+      const newPkg = { ...pkg, contributors: newContributors }
       await jsonFuture.saveAsync(pkgPath, newPkg)
       if (print) {
         console.log(
@@ -132,7 +146,7 @@ const renderContributors = (contributors, maxIndent) => {
         )
       }
     }
-  } catch (err) {
-    processError(err)
   }
-})()
+}
+
+getContributors().catch(processError)
