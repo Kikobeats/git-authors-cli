@@ -51,13 +51,17 @@
   "scripts": {
     "clean": "rm -rf node_modules",
     "lint": "standard-markdown && standard",
-    "precommit": "lint-staged",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
     "test": "exit 0"
   },
   "preferGlobal": true,
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "package.json": [
       "finepack",
