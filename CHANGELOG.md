@@ -1,3 +1,12 @@
+<a name="1.0.5"></a>
+## 1.0.5 (2018-10-10)
+
+* Don't add author as contributor ([dc6ac0e](https://github.com/Kikobeats/git-authors-cli/commit/dc6ac0e))
+* Migrate husky ([2d6942b](https://github.com/Kikobeats/git-authors-cli/commit/2d6942b))
+* Update dependencies ([18212aa](https://github.com/Kikobeats/git-authors-cli/commit/18212aa))
+
+
+
 <a name="1.0.4"></a>
 ## 1.0.4 (2018-06-24)
 
