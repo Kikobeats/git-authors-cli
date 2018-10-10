@@ -27,7 +27,7 @@
     "package.json"
   ],
   "dependencies": {
-    "execa": "~0.10.0",
+    "execa": "~1.0.0",
     "exists-file": "~3.0.2",
     "json-future": "~2.1.2",
     "meow": "~5.0.0",
@@ -39,7 +39,7 @@
     "husky": "latest",
     "lint-staged": "latest",
     "prettier-standard": "latest",
-    "standard": "latest",
+    "standard": "11",
     "standard-markdown": "latest"
   },
   "engines": {
