@@ -3,7 +3,7 @@
 ![Last version](https://img.shields.io/github/tag/Kikobeats/git-authors-cli.svg?style=flat-square)
 [![Dependency status](https://img.shields.io/david/Kikobeats/git-authors-cli.svg?style=flat-square)](https://david-dm.org/Kikobeats/git-authors-cli)
 [![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/git-authors-cli.svg?style=flat-square)](https://david-dm.org/Kikobeats/git-authors-cli#info=devDependencies)
-[![NPM Status](https://img.shields.io/npm/dm/git-authors-cli.svg?style=flat-square)](https://www.npmjs.org/package/git-authors-cli)
+[![NPM Status](https://img.shields.io/npm/dm/git-authors-cli.svg?style=flat-square)](https://www.npmjs.org/package/git-authors-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/Kikobeats/git-authors-cli.svg)](https://greenkeeper.io/)
 
 ![](demo.png)
 
