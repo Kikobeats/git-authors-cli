@@ -25,10 +25,11 @@ const REGEX_EMAIL_VARIATIONS = /[.+]/g
 const normalizeEmail = email =>
   email.toLowerCase().replace(REGEX_EMAIL_VARIATIONS, '')
 
-const isSameEmail = (email1, email2) =>
+const isSameEmail = (email1 = '', email2 = '') =>
   normalizeEmail(email1) === normalizeEmail(email2)
 
 const processError = err => {
+  console.log('err', err)
   console.log(chalk.red(err.message || err))
   process.exit(1)
 }
@@ -94,7 +95,7 @@ const getContributors = async () => {
 
   if (stderr) return processError(stderr)
 
-  const { author: pkgAuthor } = require(pkgPath)
+  const { author: pkgAuthor = {} } = require(pkgPath)
 
   const contributors = stdout
     .split(EOL)
