@@ -1,3 +1,14 @@
+<a name="1.0.6"></a>
+## 1.0.6 (2018-10-14)
+
+* Fix non email present ([c247a44](https://github.com/Kikobeats/git-authors-cli/commit/c247a44))
+* Update package.json ([4eebeb4](https://github.com/Kikobeats/git-authors-cli/commit/4eebeb4))
+* Update README.md ([9a7eb74](https://github.com/Kikobeats/git-authors-cli/commit/9a7eb74))
+* docs(readme): add Greenkeeper badge ([c80cc90](https://github.com/Kikobeats/git-authors-cli/commit/c80cc90))
+* chore(package): update dependencies ([b5b0c90](https://github.com/Kikobeats/git-authors-cli/commit/b5b0c90))
+
+
+
 <a name="1.0.5"></a>
 ## 1.0.5 (2018-10-10)
 
