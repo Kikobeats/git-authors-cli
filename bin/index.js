@@ -14,7 +14,7 @@ require('update-notifier')({ pkg: rootPkg }).notify()
 
 const TTY = process.platform === 'win32' ? 'CON' : '/dev/tty'
 
-const BLACKLIST_KEYWORDS = ['greenkeeper', 'noreply', '\\bbot\\b']
+const BLACKLIST_KEYWORDS = ['greenkeeper', 'noreply', '\\bbot\\b', 'Travis CI']
 
 const REGEX_BLACKLIST_KEYWORDS = new RegExp(BLACKLIST_KEYWORDS.join('|'), 'i')
 
