@@ -1,3 +1,10 @@
+<a name="1.0.7"></a>
+## 1.0.7 (2018-11-06)
+
+* Exclude Travis user ([10b2c83](https://github.com/Kikobeats/git-authors-cli/commit/10b2c83))
+
+
+
 <a name="1.0.6"></a>
 ## 1.0.6 (2018-10-14)
 
