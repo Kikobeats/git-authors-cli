@@ -1,3 +1,10 @@
+<a name="1.0.8"></a>
+## 1.0.8 (2018-11-27)
+
+* Merging authors name ([111f902](https://github.com/Kikobeats/git-authors-cli/commit/111f902))
+
+
+
 <a name="1.0.7"></a>
 ## 1.0.7 (2018-11-06)
 
