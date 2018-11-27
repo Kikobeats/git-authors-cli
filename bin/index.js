@@ -109,10 +109,17 @@ const getContributors = async () => {
         name: name.trim()
       })
     }, [])
-    .reduce((acc, contributor, indexContributor, contributors) => {
+    .reduce((acc, contributor) => {
       const index = acc.findIndex(({ email }) =>
         isSameEmail(email, contributor.email)
       )
+      const isPresent = index !== -1
+      if (!isPresent) return acc.concat(contributor)
+      acc[index].commits += contributor.commits
+      return acc
+    }, [])
+    .reduce((acc, contributor) => {
+      const index = acc.findIndex(({ name }) => name === contributor.name)
       const isPresent = index !== -1
       if (!isPresent) return acc.concat(contributor)
       acc[index].commits += contributor.commits
