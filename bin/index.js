@@ -129,7 +129,7 @@ const getContributors = async () => {
     .filter(
       ({ email }) =>
         isString(pkgAuthor)
-          ? new RegExp(pkgAuthor, 'i').test(email)
+          ? !new RegExp(pkgAuthor, 'i').test(email)
           : !isSameEmail(pkgAuthor.email, email)
     )
     .sort((c1, c2) => c2.commits - c1.commits)
