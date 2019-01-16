@@ -1,3 +1,10 @@
+<a name="1.0.9"></a>
+## 1.0.9 (2019-01-16)
+
+* Fix no contributors reported ([62e8ea2](https://github.com/Kikobeats/git-authors-cli/commit/62e8ea2))
+
+
+
 <a name="1.0.8"></a>
 ## 1.0.8 (2018-11-27)
 
