@@ -2,7 +2,7 @@
   "name": "git-authors-cli",
   "description": "Print all contributors and add it into package.json",
   "homepage": "https://documentup.com/Kikobeats/git-authors-cli",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "bin": {
     "git-authors-cli": "bin/index.js"
   },
@@ -100,5 +100,10 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
-  }
+  },
+  "contributors": [
+    "ImgBotApp <ImgBotHelp@gmail.com>",
+    "Jorge Marin <jorge@bitnami.com>",
+    "Manuel Rueda <manuel.rueda.un@gmail.com>"
+  ]
 }
