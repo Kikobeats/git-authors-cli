@@ -5,7 +5,6 @@ const existsFile = require('exists-file')
 const jsonFuture = require('json-future')
 const execa = require('execa')
 const chalk = require('chalk')
-const { EOL } = require('os')
 const path = require('path')
 
 const rootPkg = require('../package.json')
@@ -22,11 +21,9 @@ const isString = value => typeof value === 'string'
 
 const REGEX_EMAIL_VARIATIONS = /[.+]/g
 
-const normalizeEmail = email =>
-  email.toLowerCase().replace(REGEX_EMAIL_VARIATIONS, '')
+const normalizeEmail = email => email.toLowerCase().replace(REGEX_EMAIL_VARIATIONS, '')
 
-const isSameEmail = (email1 = '', email2 = '') =>
-  normalizeEmail(email1) === normalizeEmail(email2)
+const isSameEmail = (email1 = '', email2 = '') => normalizeEmail(email1) === normalizeEmail(email2)
 
 const processError = err => {
   console.log('err', err)
@@ -81,8 +78,25 @@ const renderContributors = (contributors, maxIndent) => {
   })
 }
 
+const gitLogExtractor = /^\s*(\d*)\s*((.*)<(.*)>)$/gim
+const extractContributors = stdout => {
+  const result = []
+  let item
+  while ((item = gitLogExtractor.exec(stdout))) {
+    if (item[1] && item[2] && item[3] && item[4]) {
+      result.push({
+        author: item[2].trim(),
+        commits: Number(item[1].trim()),
+        email: item[4].trim(),
+        name: item[3].trim()
+      })
+    }
+  }
+  return result
+}
+
 const getContributors = async () => {
-  if (!await existsFile('.git')) {
+  if (!(await existsFile('.git'))) {
     return processError({
       message: 'Ops, not git directory detected!'
     })
@@ -97,22 +111,9 @@ const getContributors = async () => {
 
   const { author: pkgAuthor = {} } = require(pkgPath)
 
-  const contributors = stdout
-    .split(EOL)
-    .reduce((acc, line) => {
-      const [commits, author] = line.split('\t')
-      const [name, email] = author.split('<')
-      return acc.concat({
-        author,
-        commits: Number(commits.trim()),
-        email: email.replace('>', ''),
-        name: name.trim()
-      })
-    }, [])
+  const contributors = extractContributors(stdout)
     .reduce((acc, contributor) => {
-      const index = acc.findIndex(({ email }) =>
-        isSameEmail(email, contributor.email)
-      )
+      const index = acc.findIndex(({ email }) => isSameEmail(email, contributor.email))
       const isPresent = index !== -1
       if (!isPresent) return acc.concat(contributor)
       acc[index].commits += contributor.commits
@@ -126,17 +127,14 @@ const getContributors = async () => {
       return acc
     }, [])
     .filter(({ author }) => !REGEX_BLACKLIST_KEYWORDS.test(author))
-    .filter(
-      ({ email }) =>
-        isString(pkgAuthor)
-          ? !new RegExp(pkgAuthor, 'i').test(email)
-          : !isSameEmail(pkgAuthor.email, email)
+    .filter(({ email }) =>
+      isString(pkgAuthor)
+        ? !new RegExp(pkgAuthor, 'i').test(email)
+        : !isSameEmail(pkgAuthor.email, email)
     )
     .sort((c1, c2) => c2.commits - c1.commits)
 
-  const maxIndent = contributors.length
-    ? getMaxIndent(contributors, 'commits')
-    : ''
+  const maxIndent = contributors.length ? getMaxIndent(contributors, 'commits') : ''
 
   if (contributors.length) {
     if (print) renderContributors(contributors, maxIndent)
@@ -148,9 +146,7 @@ const getContributors = async () => {
       await jsonFuture.saveAsync(pkgPath, newPkg)
       if (print) {
         console.log(
-          `\n${indent(maxIndent)} ${chalk.gray(
-            `Added into ${chalk.white('package.json')} ✨`
-          )}`
+          `\n${indent(maxIndent)} ${chalk.gray(`Added into ${chalk.white('package.json')} ✨`)}`
         )
       }
     }
