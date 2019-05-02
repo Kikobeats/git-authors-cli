@@ -29,7 +29,7 @@
   "dependencies": {
     "execa": "~1.0.0",
     "exists-file": "~3.0.2",
-    "json-future": "~2.1.2",
+    "json-future": "~2.1.4",
     "meow": "~5.0.0",
     "update-notifier": "~2.5.0"
   },
@@ -45,7 +45,7 @@
     "lint-staged": "latest",
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
-    "standard": "11",
+    "standard": "latest",
     "standard-markdown": "latest",
     "standard-version": "latest"
   },
