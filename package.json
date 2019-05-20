@@ -12,8 +12,14 @@
     "url": "https://kikobeats.com"
   },
   "contributors": [
-    "Jorge Marin <jorge@bitnami.com>",
-    "Manuel Rueda <manuel.rueda.un@gmail.com>"
+    {
+      "name": "Jorge Marin",
+      "email": "jorge@bitnami.com"
+    },
+    {
+      "name": "Manuel Rueda",
+      "email": "manuel.rueda.un@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -43,7 +49,6 @@
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
-    "git-authors-cli": "latest",
     "git-dirty": "latest",
     "husky": "latest",
     "lint-staged": "latest",
@@ -66,7 +71,7 @@
     "prerelease": "npm run update:check",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
-    "release": "git add package.json && standard-version -a",
+    "release": "bin/index.js && git add package.json && standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "test": "exit 0",
@@ -99,10 +104,5 @@
       "standard-markdown",
       "git add"
     ]
-  },
-  "standard-version": {
-    "scripts": {
-      "precommit": "git-authors-cli"
-    }
   }
 }
