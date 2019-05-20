@@ -11,6 +11,16 @@
     "name": "Kiko Beats",
     "url": "https://kikobeats.com"
   },
+  "contributors": [
+    {
+      "name": "Jorge Marin",
+      "email": "jorge@bitnami.com"
+    },
+    {
+      "name": "Manuel Rueda",
+      "email": "manuel.rueda.un@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kikobeats/git-authors-cli.git"
@@ -31,7 +41,7 @@
     "exists-file": "~3.0.2",
     "json-future": "~2.1.4",
     "meow": "~5.0.0",
-    "update-notifier": "~2.6.0"
+    "update-notifier": "~3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -100,10 +110,5 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
-  },
-  "contributors": [
-    "ImgBotApp <ImgBotHelp@gmail.com>",
-    "Jorge Marin <jorge@bitnami.com>",
-    "Manuel Rueda <manuel.rueda.un@gmail.com>"
-  ]
+  }
 }
