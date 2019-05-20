@@ -1,6 +1,20 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.11](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.10...v1.0.11) (2019-05-20)
+
+
+### Bug Fixes
+
+* **package:** update update-notifier to version 2.6.0 ([8dc8d6a](https://github.com/Kikobeats/git-authors-cli/commit/8dc8d6a))
+
+
+### Build System
+
+* update dependencies ([817ce3c](https://github.com/Kikobeats/git-authors-cli/commit/817ce3c))
+
+
 
 ## 1.0.10 (2019-05-02)
 
