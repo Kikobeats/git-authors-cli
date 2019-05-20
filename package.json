@@ -63,7 +63,7 @@
     "clean": "rm -rf node_modules",
     "lint": "standard-markdown && standard",
     "postrelease": "npm run release:tags && npm run release:github && ci-publish",
-    "prerelease": "npm run update:check && git-authors-cli",
+    "prerelease": "npm run update:check",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js {core,test,bin,scripts}/**/*.js --single-quote --print-width 100",
     "release": "git add package.json && standard-version -a",
@@ -102,7 +102,7 @@
   },
   "standard-version": {
     "scripts": {
-      "prechangelog": "git-authors-cli"
+      "precommit": "git-authors-cli"
     }
   }
 }
