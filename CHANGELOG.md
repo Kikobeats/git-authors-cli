@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.16](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.15...v1.0.16) (2019-05-20)
+
+
+### Build System
+
+* change git-authors-cli position ([55ca4c4](https://github.com/Kikobeats/git-authors-cli/commit/55ca4c4))
+
+
+
 ### [1.0.15](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.14...v1.0.15) (2019-05-20)
 
 
