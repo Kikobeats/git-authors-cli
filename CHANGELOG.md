@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.17](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.16...v1.0.17) (2019-05-27)
+
+
+### Bug Fixes
+
+* **package:** update json-future to version 2.2.0 ([212c88c](https://github.com/Kikobeats/git-authors-cli/commit/212c88c))
+
+
+### Build System
+
+* tweak meta ([ef9c46d](https://github.com/Kikobeats/git-authors-cli/commit/ef9c46d))
+
+
+
 ### [1.0.16](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.15...v1.0.16) (2019-05-20)
 
 
