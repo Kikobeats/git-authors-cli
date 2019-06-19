@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.18](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.17...v1.0.18) (2019-06-19)
+
+
+### Build System
+
+* update travis ([abcf43a](https://github.com/Kikobeats/git-authors-cli/commit/abcf43a))
+
+
+
 ### [1.0.17](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.16...v1.0.17) (2019-05-27)
 
 
