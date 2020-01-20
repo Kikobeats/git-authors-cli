@@ -4,6 +4,7 @@
   "homepage": "https://nicedoc.io/Kikobeats/git-authors-cli",
   "version": "1.0.18",
   "bin": {
+    "git-authors": "bin/index.js",
     "git-authors-cli": "bin/index.js"
   },
   "author": {
