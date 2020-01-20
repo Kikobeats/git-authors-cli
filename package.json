@@ -12,8 +12,14 @@
     "url": "https://kikobeats.com"
   },
   "contributors": [
-    "Jorge Marin <jorge@bitnami.com>",
-    "Manuel Rueda <manuel.rueda.un@gmail.com>"
+    {
+      "name": "Jorge Marin",
+      "email": "jorge@bitnami.com"
+    },
+    {
+      "name": "Manuel Rueda",
+      "email": "manuel.rueda.un@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -31,11 +37,11 @@
     "package.json"
   ],
   "dependencies": {
-    "execa": "~2.0.0",
+    "execa": "~4.0.0",
     "exists-file": "~3.0.2",
-    "json-future": "~2.2.0",
-    "meow": "~5.0.0",
-    "update-notifier": "~3.0.0"
+    "json-future": "~2.2.4",
+    "meow": "~6.0.0",
+    "update-notifier": "~4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
