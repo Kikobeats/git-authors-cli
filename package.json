@@ -35,7 +35,7 @@
     "exists-file": "~3.0.2",
     "json-future": "~2.2.0",
     "meow": "~5.0.0",
-    "update-notifier": "~3.0.0"
+    "update-notifier": "~4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
