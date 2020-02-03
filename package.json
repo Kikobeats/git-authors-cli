@@ -2,7 +2,7 @@
   "name": "git-authors-cli",
   "description": "Print all contributors and add it into package.json",
   "homepage": "https://nicedoc.io/Kikobeats/git-authors-cli",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "bin": {
     "git-authors": "bin/index.js",
     "git-authors-cli": "bin/index.js"
@@ -13,14 +13,7 @@
     "url": "https://kikobeats.com"
   },
   "contributors": [
-    {
-      "name": "Jorge Marin",
-      "email": "jorge@bitnami.com"
-    },
-    {
-      "name": "Manuel Rueda",
-      "email": "manuel.rueda.un@gmail.com"
-    }
+    "Jorge Marin <jorge@bitnami.com>"
   ],
   "repository": {
     "type": "git",
