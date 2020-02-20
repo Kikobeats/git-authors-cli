@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.22](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.21...v1.0.22) (2020-02-20)
+
+
+### Bug Fixes
+
+* create a new email validator every time ([1b610c8](https://github.com/Kikobeats/git-authors-cli/commit/1b610c8b0ea17725f53560f6c2fdab9b6517ce48))
+
 ### [1.0.21](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.20...v1.0.21) (2020-02-17)
 
 ### [1.0.20](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.19...v1.0.20) (2020-02-03)
