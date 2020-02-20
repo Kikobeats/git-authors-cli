@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-const emailRegex = require('email-regex')()
+const emailRegex = require('email-regex')
 const existsFile = require('exists-file')
 const jsonFuture = require('json-future')
 const execa = require('execa')
@@ -133,7 +133,7 @@ const getContributors = async () => {
         ? !new RegExp(pkgAuthor, 'i').test(email)
         : !isSameEmail(pkgAuthor.email, email)
     )
-    .filter(({ email }) => emailRegex.test(email))
+    .filter(({ email }) => emailRegex().test(email))
     .sort((c1, c2) => c2.commits - c1.commits)
 
   const maxIndent = contributors.length ? getMaxIndent(contributors, 'commits') : ''
