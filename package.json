@@ -13,9 +13,18 @@
     "url": "https://kikobeats.com"
   },
   "contributors": [
-    "Jorge Marin <jorge@bitnami.com>",
-    "Manuel Rueda <manuel.rueda.un@gmail.com>",
-    "achingbrain <alex@achingbrain.net>"
+    {
+      "name": "Jorge Marin",
+      "email": "jorge@bitnami.com"
+    },
+    {
+      "name": "Manuel Rueda",
+      "email": "manuel.rueda.un@gmail.com"
+    },
+    {
+      "name": "achingbrain",
+      "email": "alex@achingbrain.net"
+    }
   ],
   "repository": {
     "type": "git",
@@ -33,6 +42,7 @@
     "package.json"
   ],
   "dependencies": {
+    "chalk": "~4.0.0",
     "email-regex": "~4.0.0",
     "execa": "~4.0.0",
     "exists-file": "~3.0.2",
