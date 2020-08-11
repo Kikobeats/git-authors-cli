@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.28](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.27...v1.0.28) (2020-08-11)
+
 ### [1.0.27](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.26...v1.0.27) (2020-06-10)
 
 ### [1.0.26](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.25...v1.0.26) (2020-05-16)
