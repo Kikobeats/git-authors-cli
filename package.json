@@ -2,7 +2,7 @@
   "name": "git-authors-cli",
   "description": "Print all contributors and add it into package.json",
   "homepage": "https://nicedoc.io/Kikobeats/git-authors-cli",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "bin": {
     "git-authors": "bin/index.js",
     "git-authors-cli": "bin/index.js"
@@ -13,8 +13,18 @@
     "url": "https://kikobeats.com"
   },
   "contributors": [
-    "Manuel Rueda <manuel.rueda.un@gmail.com>",
-    "achingbrain <alex@achingbrain.net>"
+    {
+      "name": "Manuel Rueda",
+      "email": "manuel.rueda.un@gmail.com"
+    },
+    {
+      "name": "achingbrain",
+      "email": "alex@achingbrain.net"
+    },
+    {
+      "name": "Jorge Marin",
+      "email": "jorge@bitnami.com"
+    }
   ],
   "repository": {
     "type": "git",
