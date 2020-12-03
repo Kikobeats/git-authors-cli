@@ -34,7 +34,7 @@
   "dependencies": {
     "chalk": "~4.1.0",
     "email-regex": "~4.0.0",
-    "execa": "~4.1.0",
+    "execa": "~5.0.0",
     "exists-file": "~3.0.2",
     "json-future": "~2.2.4",
     "meow": "~8.0.0",
