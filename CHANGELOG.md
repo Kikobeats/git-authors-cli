@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.35](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.34...v1.0.35) (2021-07-01)
+
+
+### Bug Fixes
+
+* prevent to add bot names ([f0c3bf3](https://github.com/Kikobeats/git-authors-cli/commit/f0c3bf3d135cdf3bca5fc60cddb26ad30accc9e3))
+
 ### [1.0.34](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.33...v1.0.34) (2021-06-04)
 
 ### [1.0.33](https://github.com/Kikobeats/git-authors-cli/compare/v1.0.32...v1.0.33) (2021-01-08)
