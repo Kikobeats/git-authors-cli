@@ -14,9 +14,9 @@ require('update-notifier')({ pkg: rootPkg }).notify()
 
 const TTY = process.platform === 'win32' ? 'CON' : '/dev/tty'
 
-const BLACKLIST_KEYWORDS = ['ImgBotApp', 'greenkeeper', 'noreply', '\\bbot\\b', 'Travis CI']
+const BOT_NAMES = ['ImgBotApp', 'greenkeeper', 'noreply', '\\bbot\\b', 'Travis CI']
 
-const REGEX_BLACKLIST_KEYWORDS = new RegExp(BLACKLIST_KEYWORDS.join('|'), 'i')
+const REGEX_BOT_NAMES = new RegExp(BOT_NAMES.join('|'), 'i')
 
 const isString = value => typeof value === 'string'
 
@@ -127,7 +127,7 @@ const getContributors = async () => {
       acc[index].commits += contributor.commits
       return acc
     }, [])
-    .filter(({ author }) => !REGEX_BLACKLIST_KEYWORDS.test(author))
+    .filter(({ name }) => !REGEX_BOT_NAMES.test(name))
     .filter(({ email }) =>
       isString(pkgAuthor)
         ? !new RegExp(pkgAuthor, 'i').test(email)
