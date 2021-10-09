@@ -42,12 +42,12 @@
     "package.json"
   ],
   "dependencies": {
-    "chalk": "~4.1.0",
     "email-regex": "~4.0.0",
     "execa": "~5.1.0",
     "exists-file": "~3.0.2",
     "json-future": "~2.2.4",
     "meow": "~9.0.0",
+    "picocolors": "~0.2.1",
     "update-notifier": "~5.1.0"
   },
   "devDependencies": {

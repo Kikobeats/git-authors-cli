@@ -1,6 +1,6 @@
 'use strict'
 
-const { gray, white } = require('chalk')
+const { gray, white } = require('picocolors')
 
 module.exports = white(`Usage
   ${gray('$')} git-authors-cli ${gray('[options]')}
@@ -12,14 +12,10 @@ Options
   ${gray('--')}save   ${gray(
   'Write contributors into package.json if it exists (defaults to true)'
 )}
-  ${gray('--')}print  ${gray(
-  'Show information from the terminal (defaults to true)'
-)}
+  ${gray('--')}print  ${gray('Show information from the terminal (defaults to true)')}
 
 Examples
-  ${gray('$')} git-authors-cli ${gray(
-  '# Get contributors for the current path project.'
-)}
+  ${gray('$')} git-authors-cli ${gray('# Get contributors for the current path project.')}
   ${gray('$')} git-authors-cli ~/Projects/metascraper ${gray(
   '# Get contributors for a specific path project.'
 )}`)

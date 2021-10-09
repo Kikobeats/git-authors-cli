@@ -4,8 +4,8 @@
 const emailRegex = require('email-regex')
 const existsFile = require('exists-file')
 const jsonFuture = require('json-future')
+const colors = require('picocolors')
 const execa = require('execa')
-const chalk = require('chalk')
 const path = require('path')
 
 const rootPkg = require('../package.json')
@@ -28,7 +28,7 @@ const isSameEmail = (email1 = '', email2 = '') => normalizeEmail(email1) === nor
 
 const processError = err => {
   console.log('err', err)
-  console.log(chalk.red(err.message || err))
+  console.log(colors.red(err.message || err))
   process.exit(1)
 }
 
@@ -73,8 +73,8 @@ const indent = (maxIndentation, prop = '') => {
 const renderContributors = (contributors, maxIndent) => {
   console.log()
   contributors.forEach(({ author, commits, name, email }) => {
-    const prettyAuthor = chalk.gray(author.replace(name, chalk.white(name)))
-    const prettyCommits = chalk.white(`${indent(maxIndent, commits)}${commits}`)
+    const prettyAuthor = colors.gray(author.replace(name, colors.white(name)))
+    const prettyCommits = colors.white(`${indent(maxIndent, commits)}${commits}`)
     console.log(`  ${prettyCommits}  ${prettyAuthor}`)
   })
 }
@@ -148,7 +148,7 @@ const getContributors = async () => {
       await jsonFuture.saveAsync(pkgPath, newPkg)
       if (print) {
         console.log(
-          `\n${indent(maxIndent)} ${chalk.gray(`Added into ${chalk.white('package.json')} ✨`)}`
+          `\n${indent(maxIndent)} ${colors.gray(`Added into ${colors.white('package.json')} ✨`)}`
         )
       }
     }
