@@ -115,7 +115,6 @@ const getContributors = async () => {
   if (stderr) return processError(stderr)
 
   const { author: pkgAuthor = {} } = require(pkgPath)
-  // ['pattern1', 'pattern2'] converted to RegExp: /(pattern1|pattern2)/i
   const ignorePatternReg = (ignorePattern.length === 0) ? undefined : new RegExp(`(${ignorePattern.join('|')})`,'i');
 
   const contributors = extractContributors(stdout)
