@@ -47,6 +47,10 @@ const cli = require('meow')({
     save: {
       type: 'boolean',
       default: true
+    },
+    ignorePattern: {
+      type: 'string',
+      isMultiple: true,
     }
   }
 })
@@ -103,7 +107,7 @@ const getContributors = async () => {
     })
   }
 
-  const { print, cwd, save } = cli.flags
+  const { print, cwd, save, ignorePattern } = cli.flags
   const pkgPath = path.join(cwd, 'package.json')
   const cmd = `git shortlog -sne < ${TTY}`
   const { stdout, stderr } = await execa.command(cmd, { cwd, shell: true })
@@ -111,6 +115,7 @@ const getContributors = async () => {
   if (stderr) return processError(stderr)
 
   const { author: pkgAuthor = {} } = require(pkgPath)
+  const ignorePatternReg = (ignorePattern.length === 0) ? undefined : new RegExp(`(${ignorePattern.join('|')})`,'i');
 
   const contributors = extractContributors(stdout)
     .reduce((acc, contributor) => {
@@ -134,6 +139,7 @@ const getContributors = async () => {
         : !isSameEmail(pkgAuthor.email, email)
     )
     .filter(({ email }) => emailRegex().test(email))
+    .filter(({ author }) => !(ignorePatternReg && ignorePatternReg.test(author)))
     .sort((c1, c2) => c2.commits - c1.commits)
 
   const maxIndent = contributors.length ? getMaxIndent(contributors, 'commits') : ''
