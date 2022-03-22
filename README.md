@@ -29,10 +29,12 @@ $ git-authors-cli --help
     --cwd    Specify the path for running the command (defaults to process.cwd())
     --save   Write contributors into package.json if it exists (defaults to true)
     --print  Show information from the terminal (defaults to true)
+    --ignore-pattern  Skip authors if their name or email match pattern (allow multiple)
 
   Examples
     $ git-authors-cli # Get contributors for the current path project.
     $ git-authors-cli ~/Projects/metascraper # Get contributors for a specific path project.
+    $ git-authors-cli --ignore-pattern noreply.github.com # Ignore github public surrogate emails.
 ```
 
 ## License
