@@ -140,7 +140,12 @@ const getContributors = async () => {
     )
     .filter(({ email }) => emailRegex().test(email))
     .filter(({ author }) => !(ignorePatternReg && ignorePatternReg.test(author)))
-    .sort((c1, c2) => c2.commits - c1.commits)
+    .sort(
+      (c1, c2) =>
+        c1.commits - c2.commits || // sort by commit count
+        c1.name.toLowerCase().localeCompare(c2.name.toLowerCase()) || // if equal, sort by name
+        c1.email.localeCompare(c2.email) // if equal, sort by email
+    )
 
   const maxIndent = contributors.length ? getMaxIndent(contributors, 'commits') : ''
 
