@@ -143,8 +143,8 @@ const getContributors = async () => {
     .sort(
       (c1, c2) =>
         c1.commits - c2.commits || // sort by commit count
-        c1.name.toLowerCase().localeCompare(c2.name.toLowerCase()) || // if equal, sort by name
-        c1.email.localeCompare(c2.email) // if equal, sort by email
+        c1.email.localeCompare(c2.email) || // if equal, sort by email
+        c1.name.toLowerCase().localeCompare(c2.name.toLowerCase()) // if equal, sort by name
     )
 
   const maxIndent = contributors.length ? getMaxIndent(contributors, 'commits') : ''
