@@ -50,7 +50,7 @@ const cli = require('meow')({
     },
     ignorePattern: {
       type: 'string',
-      isMultiple: true,
+      isMultiple: true
     }
   }
 })
@@ -115,7 +115,8 @@ const getContributors = async () => {
   if (stderr) return processError(stderr)
 
   const { author: pkgAuthor = {} } = require(pkgPath)
-  const ignorePatternReg = (ignorePattern.length === 0) ? undefined : new RegExp(`(${ignorePattern.join('|')})`,'i');
+  const ignorePatternReg =
+    ignorePattern.length === 0 ? undefined : new RegExp(`(${ignorePattern.join('|')})`, 'i')
 
   const contributors = extractContributors(stdout)
     .reduce((acc, contributor) => {
