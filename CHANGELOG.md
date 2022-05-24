@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.40 (2022-05-24)
+
+
+### Bug Fixes
+
+* linter ([5f0ac37](https://github.com/Kikobeats/git-authors-cli/commit/5f0ac3754b0df9d90053b56ef083153af18bb791))
+
 ### 1.0.39 (2022-03-22)
 
 ### 1.0.38 (2022-03-22)
