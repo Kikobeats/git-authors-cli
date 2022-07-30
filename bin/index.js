@@ -7,6 +7,7 @@ const jsonFuture = require('json-future')
 const colors = require('picocolors')
 const execa = require('execa')
 const path = require('path')
+const mri = require('mri')
 
 const rootPkg = require('../package.json')
 
@@ -26,32 +27,12 @@ const normalizeEmail = email => email.toLowerCase().replace(REGEX_EMAIL_VARIATIO
 
 const isSameEmail = (email1 = '', email2 = '') => normalizeEmail(email1) === normalizeEmail(email2)
 
-const processError = err => {
-  console.log('err', err)
-  console.log(colors.red(err.message || err))
-  process.exit(1)
-}
-
-const cli = require('meow')({
-  pkg: rootPkg,
-  help: require('./help'),
-  flags: {
-    cwd: {
-      type: 'string',
-      default: process.cwd()
-    },
-    print: {
-      type: 'boolean',
-      default: true
-    },
-    save: {
-      type: 'boolean',
-      default: true
-    },
-    ignorePattern: {
-      type: 'string',
-      isMultiple: true
-    }
+const flags = mri(process.argv.slice(2), {
+  default: {
+    cwd: process.cwd(),
+    print: true,
+    save: true,
+    ignorePattern: []
   }
 })
 
@@ -107,7 +88,7 @@ const getContributors = async () => {
     })
   }
 
-  const { print, cwd, save, ignorePattern } = cli.flags
+  const { print, cwd, save, ignorePattern } = flags
   const pkgPath = path.join(cwd, 'package.json')
   const cmd = `git shortlog -sne < ${TTY}`
   const { stdout, stderr } = await execa.command(cmd, { cwd, shell: true })
@@ -167,4 +148,7 @@ const getContributors = async () => {
   }
 }
 
-getContributors().catch(processError)
+Promise.resolve(flags.help ? console.log(require('./help')) : getContributors()).catch(error => {
+  console.log(colors.red(error.message || error))
+  process.exit(1)
+})
