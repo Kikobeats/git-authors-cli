@@ -14,8 +14,8 @@
   },
   "contributors": [
     {
-      "name": "Manuel Rueda",
-      "email": "manuel.rueda.un@gmail.com"
+      "name": "Jonas Gloning",
+      "email": "34194370+jonasgloning@users.noreply.github.com"
     },
     {
       "name": "achingbrain",
@@ -24,6 +24,14 @@
     {
       "name": "Jorge Marin",
       "email": "jorge@bitnami.com"
+    },
+    {
+      "name": "Manuel Rueda",
+      "email": "manuel.rueda.un@gmail.com"
+    },
+    {
+      "name": "Thanh Tran",
+      "email": "trongthanh@gmail.com"
     }
   ],
   "repository": {
