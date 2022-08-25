@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.44 (2022-08-25)
+
+
+### Bug Fixes
+
+* add missing processError method ([141fe64](https://github.com/Kikobeats/git-authors-cli/commit/141fe64fe036567b0a99a0d231cd7e065d7b4014))
+
 ### 1.0.43 (2022-08-25)
 
 ### 1.0.42 (2022-07-30)
