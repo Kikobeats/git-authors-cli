@@ -17,7 +17,7 @@ $ npm install git-authors-cli --global
 
 ## CLI
 
-```bash
+```
 $ git-authors-cli --help
 
   Print all contributors and add it into package.json
