@@ -62,6 +62,11 @@ const renderContributors = (contributors, maxIndent) => {
   })
 }
 
+const processError = error => {
+  console.log(colors.red(error.message || error))
+  process.exit(1)
+}
+
 const gitLogExtractor = /^\s*(\d*)\s*((.*)<(.*)>)$/gim
 const extractContributors = stdout => {
   const result = []
@@ -88,7 +93,7 @@ const getContributors = async () => {
 
   const { print, cwd, save, ignorePattern } = flags
   const pkgPath = path.join(cwd, 'package.json')
-  const cmd = `git shortlog -sne HEAD`
+  const cmd = 'git shortlog -sne HEAD'
   const { stdout, stderr } = await execa.command(cmd, {
     cwd,
     shell: true,
