@@ -13,8 +13,6 @@ const rootPkg = require('../package.json')
 
 require('update-notifier')({ pkg: rootPkg }).notify()
 
-const TTY = process.platform === 'win32' ? 'CON' : '/dev/tty'
-
 const BOT_NAMES = ['ImgBotApp', 'greenkeeper', 'noreply', '\\bbot\\b', 'Travis CI']
 
 const REGEX_BOT_NAMES = new RegExp(BOT_NAMES.join('|'), 'i')
@@ -57,7 +55,7 @@ const indent = (maxIndentation, prop = '') => {
 
 const renderContributors = (contributors, maxIndent) => {
   console.log()
-  contributors.forEach(({ author, commits, name, email }) => {
+  contributors.forEach(({ author, commits, name }) => {
     const prettyAuthor = colors.gray(author.replace(name, colors.white(name)))
     const prettyCommits = colors.white(`${indent(maxIndent, commits)}${commits}`)
     console.log(`  ${prettyCommits}  ${prettyAuthor}`)
@@ -90,8 +88,12 @@ const getContributors = async () => {
 
   const { print, cwd, save, ignorePattern } = flags
   const pkgPath = path.join(cwd, 'package.json')
-  const cmd = `git shortlog -sne < ${TTY}`
-  const { stdout, stderr } = await execa.command(cmd, { cwd, shell: true })
+  const cmd = `git shortlog -sne HEAD`
+  const { stdout, stderr } = await execa.command(cmd, {
+    cwd,
+    shell: true,
+    stdio: ['ignore', 'pipe', 'pipe']
+  })
 
   if (stderr) return processError(stderr)
 
