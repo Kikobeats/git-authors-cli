@@ -1,7 +1,7 @@
 {
   "name": "git-authors-cli",
   "description": "Print all contributors and add it into package.json",
-  "homepage": "https://nicedoc.io/Kikobeats/git-authors-cli",
+  "homepage": "https://github.com/Kikobeats/git-authors-cli",
   "version": "1.0.44",
   "bin": {
     "git-authors": "bin/index.js",
