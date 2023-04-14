@@ -55,8 +55,7 @@
     "exists-file": "~3.0.2",
     "json-future": "~2.2.18",
     "mri": "~1.2.0",
-    "picocolors": "~1.0.0",
-    "update-notifier": "~5.1.0"
+    "picocolors": "~1.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",

@@ -9,10 +9,6 @@ const execa = require('execa')
 const path = require('path')
 const mri = require('mri')
 
-const rootPkg = require('../package.json')
-
-require('update-notifier')({ pkg: rootPkg }).notify()
-
 const BOT_NAMES = ['ImgBotApp', 'greenkeeper', 'noreply', '\\bbot\\b', 'Travis CI']
 
 const REGEX_BOT_NAMES = new RegExp(BOT_NAMES.join('|'), 'i')
