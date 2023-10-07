@@ -51,8 +51,7 @@
   ],
   "dependencies": {
     "email-regex": "~4.0.0",
-    "execa": "~5.1.0",
-    "exists-file": "~3.0.2",
+    "execa": "~5.1.1",
     "json-future": "~2.2.18",
     "mri": "~1.2.0",
     "picocolors": "~1.0.0"
@@ -60,13 +59,13 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "@ksmithut/prettier-standard": "latest",
     "c8": "latest",
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
     "nano-staged": "latest",
     "npm-check-updates": "latest",
-    "prettier-standard": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
@@ -101,8 +100,9 @@
     ]
   },
   "nano-staged": {
-    "*.js,!*.min.js,": [
-      "prettier-standard"
+    "*.js": [
+      "prettier-standard",
+      "standard --fix"
     ],
     "*.md": [
       "standard-markdown"

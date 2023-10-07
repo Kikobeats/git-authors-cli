@@ -2,12 +2,12 @@
 'use strict'
 
 const emailRegex = require('email-regex')
-const existsFile = require('exists-file')
 const jsonFuture = require('json-future')
 const colors = require('picocolors')
 const execa = require('execa')
 const path = require('path')
 const mri = require('mri')
+const fs = require('fs')
 
 const BOT_NAMES = ['ImgBotApp', 'greenkeeper', 'noreply', '\\bbot\\b', 'Travis CI']
 
@@ -81,7 +81,7 @@ const extractContributors = stdout => {
 }
 
 const getContributors = async () => {
-  if (!(await existsFile('.git'))) {
+  if (!fs.existsSync('.git')) {
     return processError({
       message: 'Ops, not git directory detected!'
     })
@@ -89,8 +89,7 @@ const getContributors = async () => {
 
   const { print, cwd, save, ignorePattern } = flags
   const pkgPath = path.join(cwd, 'package.json')
-  const cmd = 'git shortlog -sne HEAD'
-  const { stdout, stderr } = await execa.command(cmd, {
+  const { stdout, stderr } = await execa.command('git shortlog -sne HEAD', {
     cwd,
     shell: true,
     stdio: ['ignore', 'pipe', 'pipe']

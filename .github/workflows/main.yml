@@ -25,7 +25,7 @@ jobs:
       # - name: Report
       #   run: mkdir -p coverage && npx nyc report --reporter=text-lcov > coverage/lcov.info
       # - name: Coverage
-      #   uses: coverallsapp/github-action@master
+      #   uses: coverallsapp/github-action@main
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
