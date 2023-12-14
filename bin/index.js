@@ -4,7 +4,7 @@
 const emailRegex = require('email-regex')
 const jsonFuture = require('json-future')
 const colors = require('picocolors')
-const execa = require('execa')
+const $ = require('tinyspawn')
 const path = require('path')
 const mri = require('mri')
 const fs = require('fs')
@@ -89,7 +89,7 @@ const getContributors = async () => {
 
   const { print, cwd, save, ignorePattern } = flags
   const pkgPath = path.join(cwd, 'package.json')
-  const { stdout, stderr } = await execa.command('git shortlog -sne HEAD', {
+  const { stdout, stderr } = await $('git shortlog -sne HEAD', {
     cwd,
     shell: true,
     stdio: ['ignore', 'pipe', 'pipe']
