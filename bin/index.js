@@ -24,11 +24,13 @@ const isSameEmail = (email1 = '', email2 = '') => normalizeEmail(email1) === nor
 const flags = mri(process.argv.slice(2), {
   default: {
     cwd: process.cwd(),
-    print: true,
+    print: '',
     save: true,
     ignorePattern: []
   }
 })
+
+if (flags.print === '') flags.print = true
 
 const loadPkg = path => {
   try {
@@ -47,6 +49,19 @@ const getMaxIndent = (contributors, propName) => {
 const indent = (maxIndentation, prop = '') => {
   const indentSize = maxIndentation - String(prop).length
   return Array.from({ length: indentSize }, () => ' ').join('')
+}
+
+const renderContributorsVerbose = (contributors, maxIndent) => {
+  const maxIndexIndent = String(contributors.length).length
+
+  console.log()
+  contributors.forEach(({ author, commits, name }, index) => {
+    const prettyAuthor = colors.gray(author.replace(name, colors.white(name)))
+    const prettyCommits = colors.white(`${indent(maxIndent, commits)}${commits}`)
+    const humanIndex = index + 1
+    const prettyIndex = colors.gray(`${indent(maxIndexIndent, humanIndex)}${humanIndex}`)
+    console.log(`  ${prettyIndex} ${prettyCommits} ${prettyAuthor}`)
+  })
 }
 
 const renderContributors = (contributors, maxIndent) => {
@@ -134,7 +149,12 @@ const getContributors = async () => {
   const maxIndent = contributors.length ? getMaxIndent(contributors, 'commits') : ''
 
   if (contributors.length) {
-    if (print) renderContributors(contributors, maxIndent)
+    if (print) {
+      (print === 'verbose' ? renderContributorsVerbose : renderContributors)(
+        contributors,
+        maxIndent
+      )
+    }
     const pkg = await loadPkg(pkgPath)
 
     if (pkg && save) {

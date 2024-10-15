@@ -10,15 +10,15 @@ module.exports = white(`
     ${gray('$')} git-authors-cli ${gray('[options]')}
 
   Options
-    ${gray('--')}cwd    ${gray(
-  'Specify the path for running the command (defaults to process.cwd())'
-)}
-    ${gray('--')}save   ${gray(
-  'Write contributors into package.json if it exists (defaults to true)'
-)}
-    ${gray('--')}print  ${gray('Show information from the terminal (defaults to true)')}
-    ${gray('--')}ignore-pattern  ${gray(
+    ${gray('--')}cwd ${gray('Specify the path for running the command (defaults to process.cwd())')}
+    ${gray('--')}ignore-pattern ${gray(
   'Skip authors if their name or email match pattern (allow multiple)'
+)}
+    ${gray('--')}print ${gray(
+  'Show information from the terminal, also `print=verbose` to show more information. (defaults to true)'
+)}
+    ${gray('--')}save ${gray(
+  'Write contributors into package.json if it exists (defaults to true)'
 )}
 
   Examples
