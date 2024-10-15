@@ -42,4 +42,4 @@ $ git-authors-cli --help
 **git-authors-cli** © [Kiko Beats](https://kikobeats.com), released under the [MIT](https://github.com/Kikobeats/git-authors-cli/blob/master/LICENSE.md) License.<br>
 Authored and maintained by Kiko Beats with help from [contributors](https://github.com/Kikobeats/git-authors-cli/contributors).
 
-> [kikobeats.com](https://kikobeats.com) · GitHub [Kiko Beats](https://github.com/Kikobeats) · Twitter [@Kikobeats](https://twitter.com/Kikobeats)
+> [kikobeats.com](https://kikobeats.com) · GitHub [Kiko Beats](https://github.com/Kikobeats) · X [@Kikobeats](https://x.com/Kikobeats)
