@@ -132,11 +132,6 @@ const getContributors = async () => {
       return acc
     }, [])
     .filter(({ name }) => !REGEX_BOT_NAMES.test(name))
-    .filter(({ email }) =>
-      isString(pkgAuthor)
-        ? !new RegExp(pkgAuthor, 'i').test(email)
-        : !isSameEmail(pkgAuthor.email, email)
-    )
     .filter(({ email }) => emailRegex().test(email))
     .filter(({ author }) => !(ignorePatternReg && ignorePatternReg.test(author)))
     .sort(
@@ -150,7 +145,7 @@ const getContributors = async () => {
 
   if (contributors.length) {
     if (print) {
-      (print === 'verbose' ? renderContributorsVerbose : renderContributors)(
+      ;(print === 'verbose' ? renderContributorsVerbose : renderContributors)(
         contributors,
         maxIndent
       )
@@ -158,7 +153,13 @@ const getContributors = async () => {
     const pkg = await loadPkg(pkgPath)
 
     if (pkg && save) {
-      const newContributors = contributors.map(({ author }) => author)
+      const newContributors = contributors
+        .filter(({ email }) =>
+          isString(pkgAuthor)
+            ? !new RegExp(pkgAuthor, 'i').test(email)
+            : !isSameEmail(pkgAuthor.email, email)
+        )
+        .map(({ author }) => author)
       const newPkg = { ...pkg, contributors: newContributors }
       await jsonFuture.saveAsync(pkgPath, newPkg)
       if (print) {
