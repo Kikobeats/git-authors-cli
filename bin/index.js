@@ -52,24 +52,31 @@ const indent = (maxIndentation, prop = '') => {
 }
 
 const renderContributorsVerbose = (contributors, maxIndent) => {
-  const maxIndexIndent = String(contributors.length).length
+  // The minimum width of the first column is the length of the string 'Commits'
+  const firstColumnMinWidth = 5
 
   console.log()
+  console.log('Index  Commits  Author')
   contributors.forEach(({ author, commits, name }, index) => {
     const prettyAuthor = colors.gray(author.replace(name, colors.white(name)))
     const prettyCommits = colors.white(`${indent(maxIndent, commits)}${commits}`)
     const humanIndex = index + 1
-    const prettyIndex = colors.gray(`${indent(maxIndexIndent, humanIndex)}${humanIndex}`)
-    console.log(`  ${prettyIndex} ${prettyCommits} ${prettyAuthor}`)
+    // Indent index the width of the string 'Index'
+    const prettyIndex = colors.gray(`${indent(firstColumnMinWidth, humanIndex)}${humanIndex}`)
+    console.log(`${prettyIndex}     ${prettyCommits}   ${prettyAuthor}`)
   })
 }
 
 const renderContributors = (contributors, maxIndent) => {
+  // The minimum width of the first column is the length of the string 'Commits'
+  const firstColumnMinWidth = 7
+
   console.log()
+  console.log('Commits  Author')
   contributors.forEach(({ author, commits, name }) => {
     const prettyAuthor = colors.gray(author.replace(name, colors.white(name)))
-    const prettyCommits = colors.white(`${indent(maxIndent, commits)}${commits}`)
-    console.log(`  ${prettyCommits}  ${prettyAuthor}`)
+    const prettyCommits = colors.white(`${indent(firstColumnMinWidth, commits)}${commits}`)
+    console.log(`${prettyCommits}  ${prettyAuthor}`)
   })
 }
 
