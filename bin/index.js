@@ -3,7 +3,7 @@
 
 const emailRegex = require('email-regex')
 const jsonFuture = require('json-future')
-const colors = require('picocolors')
+const colors = require('./colors')
 const $ = require('tinyspawn')
 const path = require('path')
 const mri = require('mri')
