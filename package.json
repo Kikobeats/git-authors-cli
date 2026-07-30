@@ -1,6 +1,6 @@
 {
   "name": "git-authors-cli",
-  "description": "Print all contributors and add it into package.json",
+  "description": "List git contributors and write them into package.json authors/contributors automatically.",
   "homepage": "https://github.com/Kikobeats/git-authors-cli",
   "version": "1.0.53",
   "bin": {
@@ -46,11 +46,15 @@
     "url": "https://github.com/Kikobeats/git-authors-cli/issues"
   },
   "keywords": [
-    "author",
     "authors",
     "cli",
-    "contributor",
+    "commit",
     "contributors",
+    "credits",
+    "git",
+    "history",
+    "maintainers",
+    "oss",
     "package.json"
   ],
   "dependencies": {
@@ -62,7 +66,6 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "@ksmithut/prettier-standard": "latest",
     "c8": "latest",
     "ci-publish": "latest",
     "finepack": "latest",
@@ -106,7 +109,7 @@
   },
   "nano-staged": {
     "*.js": [
-      "prettier-standard",
+      "npx @kikobeats/prettier-standard",
       "standard --fix"
     ],
     "*.md": [
