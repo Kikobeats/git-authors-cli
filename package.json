@@ -2,7 +2,7 @@
   "name": "git-authors-cli",
   "description": "List git contributors and write them into package.json authors/contributors automatically.",
   "homepage": "https://github.com/Kikobeats/git-authors-cli",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "bin": {
     "git-authors": "bin/index.js",
     "git-authors-cli": "bin/index.js"
